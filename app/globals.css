@@ -1,8 +1,9 @@
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #08090c;
+  --foreground: #f5f5f7;
 }
 
 @theme inline {
@@ -12,15 +13,142 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(167, 139, 250, 0.35);
+  color: white;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  outline-offset: 5px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgba(196, 181, 253, 0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Premium entrance animation */
+@keyframes portfolio-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portfolio-ready main > section {
+  animation: portfolio-enter 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.portfolio-ready main > section:nth-of-type(2) {
+  animation-delay: 120ms;
+}
+
+.portfolio-ready main > section:nth-of-type(3) {
+  animation-delay: 220ms;
+}
+
+.portfolio-ready main > section:nth-of-type(4) {
+  animation-delay: 320ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-ready main > section {
+    animation: none;
+  }
+}
+
+/* Soft ambient background animation */
+@keyframes ambient-glow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(20px, -15px, 0) scale(1.08);
+    opacity: 1;
+  }
+}
+
+main > div:first-child > div:not(:last-child) {
+  animation: ambient-glow 10s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main > div:first-child > div {
+    animation: none;
+    will-change: auto;
+  }
+}
+
+/* Premium ambient violet glow */
+body {
+  /* Premium ambient violet glow */
+body {
+  background-image: none;
+  background-attachment: fixed;
+}
+  background-attachment: fixed;
+}
+
+/* Premium glass hover effect */
+.portfolio-ready article {
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    background-color 300ms ease;
+}
+
+.portfolio-ready article:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.24);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-ready article {
+    transition: none;
+  }
+
+  .portfolio-ready article:hover {
+    transform: none;
+  }
 }
