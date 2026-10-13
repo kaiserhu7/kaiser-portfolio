@@ -73,21 +73,13 @@ a:focus-visible {
   }
 }
 
+
 .portfolio-ready main > section {
-  animation: portfolio-enter 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  opacity: 1;
+  transform: none;
+  animation: none !important;
 }
 
-.portfolio-ready main > section:nth-of-type(2) {
-  animation-delay: 120ms;
-}
-
-.portfolio-ready main > section:nth-of-type(3) {
-  animation-delay: 220ms;
-}
-
-.portfolio-ready main > section:nth-of-type(4) {
-  animation-delay: 320ms;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .portfolio-ready main > section {
