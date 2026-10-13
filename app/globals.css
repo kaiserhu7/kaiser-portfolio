@@ -152,3 +152,9 @@ body {
     transform: none;
   }
 }
+@media (max-width: 768px) {
+  .portfolio-ready main > section {
+    animation: none !important;
+    animation-delay: 0ms !important;
+  }
+}
